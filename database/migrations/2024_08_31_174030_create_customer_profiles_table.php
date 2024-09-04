@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_profile', function (Blueprint $table) {
+        Schema::create('customer_profiles', function (Blueprint $table) {
             $table->id();
-
             $table->string('cus_name', 100);
             $table->string('cus_add', 500);
             $table->string('cus_city', 50);
@@ -32,8 +31,6 @@ return new class extends Migration
             $table->string('ship_phone', 50);
 
 
-
-
             $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')
                 ->restrictOnDelete()
@@ -49,6 +46,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_profile');
+        Schema::dropIfExists('customer_profiles');
     }
 };

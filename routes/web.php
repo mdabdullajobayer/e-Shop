@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,9 @@ Route::get('policy-type/{type}', [PolicyController::class, 'policy']);
 Route::get('UserLogin/{UserEmail}', [UserController::class, 'UserLogin']);
 Route::get('VerifyLogin/{UserMail}/{OTP}', [UserController::class, 'VerifyLogin']);
 Route::get('UserLogout', [UserController::class, 'UserLogout']);
+
+Route::middleware('verify_token')->group(function () {
+    // User Profile API Routes
+    Route::post('CreateUser', [ProfileController::class, 'CreateUser']);
+    Route::get('ReadProfile', [ProfileController::class, 'ReadProfile']);
+});
