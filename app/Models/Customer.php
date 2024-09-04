@@ -26,6 +26,7 @@ class Customer extends Model
         'ship_postcode',
         'ship_country',
         'ship_phone',
+        'user_id'
     ];
 
     public function user(): BelongsTo
