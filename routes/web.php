@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -49,4 +50,7 @@ Route::middleware('verify_token')->group(function () {
     // User Profile API Routes
     Route::post('CreateUser', [ProfileController::class, 'CreateUser']);
     Route::get('ReadProfile', [ProfileController::class, 'ReadProfile']);
+    // User Review API Routes
+    Route::post('CreateReview', [ProductReviewController::class, 'CreateReview']);
+    Route::post('ReadReview', [ProductReviewController::class, 'ReadReview']);
 });
