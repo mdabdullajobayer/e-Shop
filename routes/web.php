@@ -53,4 +53,9 @@ Route::middleware('verify_token')->group(function () {
     // User Review API Routes
     Route::post('CreateReview', [ProductReviewController::class, 'CreateReview']);
     Route::post('ReadReview', [ProductReviewController::class, 'ReadReview']);
+
+    // User Wishlist API Routes
+    Route::post('ProductWishList', [ProductController::class, 'ProductWishList']);
+    Route::post('CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
+    Route::post('RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
 });

@@ -7,6 +7,7 @@ use App\Models\ProductDetails;
 use App\Models\ProductReview;
 use App\Models\Products;
 use App\Models\ProductSlider;
+use App\Models\ProductWishes;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -56,6 +57,32 @@ class ProductController extends Controller
             ->with(['profile' => function ($query) {
                 $query->select('id', 'cus_name');
             }]);
+        return ResponseHelper::Out('success', $data, 200);
+    }
+
+    //Product Wishes
+    public function ProductWishList(Request $request): JsonResponse
+    {
+        $user_id = $request->header('id');
+        $data = ProductWishes::where('user_id', $user_id)->with('product')->get();
+        return ResponseHelper::Out('success', $data, 200);
+    }
+
+    public function CreateWishList(Request $request): JsonResponse
+    {
+        $user_id = $request->header('id');
+        $data = ProductWishes::updateOrCreate(
+            ['user_id' => $user_id, 'product_id' => $request->product_id],
+            ['user_id' => $user_id, 'product_id' => $request->product_id],
+        );
+        return ResponseHelper::Out('success', $data, 200);
+    }
+
+
+    public function RemoveWishList(Request $request): JsonResponse
+    {
+        $user_id = $request->header('id');
+        $data = ProductWishes::where(['user_id' => $user_id, 'product_id' => $request->product_id])->delete();
         return ResponseHelper::Out('success', $data, 200);
     }
 }
