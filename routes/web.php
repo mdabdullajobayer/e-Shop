@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
@@ -63,4 +64,14 @@ Route::middleware('verify_token')->group(function () {
     Route::post('CreateCartList', [ProductController::class, 'CreateCartList']);
     Route::get('CartList', [ProductController::class, 'CartList']);
     Route::get('DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList']);
+
+    // Invoice API Routes 
+    Route::post('CreateInvoice', [InvoiceController::class, 'CreateInvoice']);
+    Route::get("InvoiceList", [InvoiceController::class, 'InvoiceList']);
+    Route::get("InvoiceProductList/{invoice_id}", [InvoiceController::class, 'InvoiceProductList']);
 });
+
+// payment API Routes
+Route::post("/PaymentSuccess", [InvoiceController::class, 'PaymentSuccess']);
+Route::post("/PaymentCancel", [InvoiceController::class, 'PaymentCancel']);
+Route::post("/PaymentFail", [InvoiceController::class, 'PaymentFail']);
