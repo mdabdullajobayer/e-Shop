@@ -58,4 +58,9 @@ Route::middleware('verify_token')->group(function () {
     Route::post('ProductWishList', [ProductController::class, 'ProductWishList']);
     Route::post('CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
     Route::post('RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
+
+    // User Cart API Routes
+    Route::post('CreateCartList', [ProductController::class, 'CreateCartList']);
+    Route::get('CartList', [ProductController::class, 'CartList']);
+    Route::get('DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList']);
 });
