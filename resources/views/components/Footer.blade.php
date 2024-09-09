@@ -17,11 +17,11 @@
                             </li>
                             <li>
                                 <i class="ti-email"></i>
-                                <a href="mailto:info@sitename.com">info@sitename.com</a>
+                                <a href="mailto:mdabdullajobayer@gmail.com">mdabdullajobayer@gmail.com</a>
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>
-                                <p>+ 457 789 789 65</p>
+                                <p>+8801567833593</p>
                             </li>
                         </ul>
                     </div>
@@ -122,7 +122,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-center text-md-start mb-md-0">© 2020 All Rights Reserved by Bestwebcreator</p>
+                    <p class="text-center text-md-start mb-md-0">© 2024 All Rights Reserved by MD Abdulla Jobayer</p>
                 </div>
                 <div class="col-lg-6">
                     <ul class="footer_payment text-center text-md-end">

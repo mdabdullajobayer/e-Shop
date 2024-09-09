@@ -10,22 +10,30 @@
                     massa enim Nullam nunc varius.</p>
             </div>
         </div>
-        <div class="row align-items-center">
-            <div class="col-12">
-                <div class="cat_slider cat_style1 mt-4 mt-md-0 carousel_slider owl-carousel owl-theme nav_style5"
-                    data-loop="true" data-dots="false" data-nav="true" data-margin="30"
-                    data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "576":{"items": "4"}, "768":{"items": "5"}, "991":{"items": "6"}, "1199":{"items": "7"}}'>
-                    <div class="item">
-                        <div class="categories_box">
-                            <a href="#">
-                                <img src="assets/images/cat_img1.png" alt="cat_img1" />
-                                <span>Television</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row align-items-center" id="topcategory">
+
         </div>
     </div>
 </div>
 <!-- END SECTION CATEGORIES -->
+
+<script>
+    TopCategory();
+    async function TopCategory() {
+        let res = await axios.get('categroy-list');
+        $('#topcategory').empty();
+        res.data['data'].forEach((item, i) => {
+            let data =
+                `<div class="col-2 mb-2">
+                <div class="item">
+                        <div class="categories_box">
+                            <a href="#">
+                                <img src="${item['categoryImage']}" alt="cat_img1" />
+                                <span>${item['categoryName']}</span>
+                            </a>
+                        </div>
+                    </div> </div>`
+            $('#topcategory').append(data);
+        });
+    }
+</script>
