@@ -13,7 +13,6 @@
 <!-- END SECTION BANNER -->
 
 <script>
-    LoadHeroBanner();
     async function LoadHeroBanner() {
 
         let res = await axios.get('/list-product-slider');

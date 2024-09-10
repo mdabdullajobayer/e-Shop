@@ -17,7 +17,6 @@
 </div>
 <!-- END SECTION CATEGORIES -->
 <script>
-    TopBrand();
     async function TopBrand() {
         let res = await axios.get('brand-list');
         $('#TopBrand').empty();

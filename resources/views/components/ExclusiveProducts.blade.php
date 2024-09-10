@@ -96,12 +96,6 @@
 </div>
 <!-- END SECTION SHOP -->
 <script>
-    LoadProduuct('popular', "populartab");
-    LoadProduuct('new', "newtab");
-    LoadProduuct('top', "toptab");
-    LoadProduuct('special', "specialtab");
-    LoadProduuct('trending', "trendingtab");
-    LoadProduuct('regular', "regulartab");
     async function LoadProduuct(remark, tabID) {
         var tabid = $("#" + tabID);
         let res = await axios.get('list-product-remark/' + remark);

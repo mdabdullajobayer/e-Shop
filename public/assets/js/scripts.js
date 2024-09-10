@@ -11,14 +11,6 @@ PAGE JS
 (function ($) {
 	'use strict';
 
-	/*===================================*
-	01. LOADING JS
-	/*===================================*/
-	$(window).on('load', function () {
-		setTimeout(function () {
-			$(".preloader").delay(700).fadeOut(700).addClass('loaded');
-		}, 800);
-	});
 
 	/*===================================*
 	02. BACKGROUND IMAGE JS
@@ -81,7 +73,7 @@ PAGE JS
 
 	});
 
-	//Show Hide dropdown-menu Main navigation 
+	//Show Hide dropdown-menu Main navigation
 	$(document).ready(function () {
 		$('.dropdown-menu a.dropdown-toggler').on('click', function () {
 			//var $el = $( this );

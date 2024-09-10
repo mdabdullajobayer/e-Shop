@@ -40,17 +40,25 @@
 
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script>
+        function hideLoader() {
+            $(".preloader").delay(700).fadeOut(700, function() {
+                $(this).addClass('loaded');
+            });
+        }
+        hideLoader();
+    </script>
 </head>
 
 <body>
 
-    {{-- <div class="preloader">
+    <div class="preloader">
         <div class="lds-ellipsis">
             <span></span>
             <span></span>
             <span></span>
         </div>
-    </div> --}}
+    </div>
 
     <div>
         @include('components.menubar')

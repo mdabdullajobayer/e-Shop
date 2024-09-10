@@ -18,7 +18,6 @@
 <!-- END SECTION CATEGORIES -->
 
 <script>
-    TopCategory();
     async function TopCategory() {
         let res = await axios.get('categroy-list');
         $('#topcategory').empty();
