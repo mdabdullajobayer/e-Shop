@@ -33,7 +33,7 @@ Route::get('categroy-list', [CategoryController::class, 'getall']);
 // Pruduct API Route
 Route::get('list-product-catrgory/{id}', [ProductController::class, 'ListProductbyCategory']);
 Route::get('list-product-brand/{id}', [ProductController::class, 'ListProductbyBrand']);
-Route::get('list-product-remark/{id}', [ProductController::class, 'ListProductbyRemark']);
+Route::get('list-product-remark/{remark}', [ProductController::class, 'ListProductbyRemark']);
 
 Route::get('list-product-slider', [ProductController::class, 'ListProductbySlider']);
 

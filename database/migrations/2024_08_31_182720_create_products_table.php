@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image', 200);
             $table->boolean('stock');
             $table->string('price', 50);
+            $table->string('star', 50);
             $table->enum('remark', ['popular', 'new', 'top', 'special', 'trending', 'regular']);
 
             $table->unsignedBigInteger('brand_id');

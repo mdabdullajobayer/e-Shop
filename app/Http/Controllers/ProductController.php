@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function ListProductbyRemark(Request $request): JsonResponse
     {
-        $data = Products::where('remark', $request->input('remark'))
+        $data = Products::where('remark', $request->remark)
             ->with('brand', 'category')
             ->get();
         return ResponseHelper::Out('sucess', $data, 200);
