@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function ListProductbyCategory(Request $request): JsonResponse
     {
-        $data = Products::where('category_id', $request->input('id'))
+        $data = Products::where('category_id', $request->id)
             ->with('brand', 'category')
             ->get();
         return ResponseHelper::Out('sucess', $data, 200);
@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function ListProductbyBrand(Request $request): JsonResponse
     {
-        $data = Products::where('brand_id', $request->input('brand_id'))
+        $data = Products::where('brand_id', $request->brand_id)
             ->with('brand', 'category')
             ->get();
         return ResponseHelper::Out('success', $data, 200);

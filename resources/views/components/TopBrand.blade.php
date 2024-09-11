@@ -25,7 +25,7 @@
                 `<div class="col-2 mb-2">
                 <div class="item">
                         <div class="categories_box">
-                            <a href="#">
+                            <a href="by-brand?id=${item['id']}">
                                 <img src="${item['brandImage']}" alt="cat_img1" />
                                 <span>${item['brandName']}</span>
                             </a>

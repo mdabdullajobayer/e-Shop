@@ -24,7 +24,7 @@
     <div class="middle-header dark_skin">
         <div class="container">
             <div class="nav_block">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/">
                     <img class="logo_light" src="assets/images/logo_light.png" height="65px" alt="logo">
                     <img class="logo_dark" src="assets/images/logo_dark.png" alt="logo">
                 </a>
@@ -118,7 +118,7 @@
         $('#CategoryItem').empty();
         res.data['data'].forEach((item, i) => {
             let data =
-                `<li><a class="dropdown-item nav-link nav_item" href="#">${item['categoryName']}</a></li>`
+                `<li><a class="dropdown-item nav-link nav_item" href="/bycategory?id=${item['id']}">${item['categoryName']}</a></li>`
             $('#CategoryItem').append(data);
         });
     }

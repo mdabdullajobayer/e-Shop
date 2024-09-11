@@ -22,9 +22,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Web Routes
 Route::get('/', function () {
     return view('pages.HomePage');
 });
+Route::get('/bycategory', [CategoryController::class, 'ByCategory']);
+Route::get('/by-brand', [BrandController::class, 'ByBrand']);
+
 
 // Brand API Route
 Route::get('brand-list', [BrandController::class, 'getall']);
@@ -32,7 +36,7 @@ Route::get('brand-list', [BrandController::class, 'getall']);
 Route::get('categroy-list', [CategoryController::class, 'getall']);
 // Pruduct API Route
 Route::get('list-product-catrgory/{id}', [ProductController::class, 'ListProductbyCategory']);
-Route::get('list-product-brand/{id}', [ProductController::class, 'ListProductbyBrand']);
+Route::get('list-product-brand/{brand_id}', [ProductController::class, 'ListProductbyBrand']);
 Route::get('list-product-remark/{remark}', [ProductController::class, 'ListProductbyRemark']);
 
 Route::get('list-product-slider', [ProductController::class, 'ListProductbySlider']);
@@ -42,7 +46,7 @@ Route::get('list-review/{product_id}', [ProductController::class, 'ListReviewPro
 // Policy API Route
 Route::get('policy-type/{type}', [PolicyController::class, 'policy']);
 
-// User API Routes 
+// User API Routes
 Route::get('UserLogin/{UserEmail}', [UserController::class, 'UserLogin']);
 Route::get('VerifyLogin/{UserMail}/{OTP}', [UserController::class, 'VerifyLogin']);
 Route::get('UserLogout', [UserController::class, 'UserLogout']);
@@ -65,7 +69,7 @@ Route::middleware('verify_token')->group(function () {
     Route::get('CartList', [ProductController::class, 'CartList']);
     Route::get('DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList']);
 
-    // Invoice API Routes 
+    // Invoice API Routes
     Route::post('CreateInvoice', [InvoiceController::class, 'CreateInvoice']);
     Route::get("InvoiceList", [InvoiceController::class, 'InvoiceList']);
     Route::get("InvoiceProductList/{invoice_id}", [InvoiceController::class, 'InvoiceProductList']);
