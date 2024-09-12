@@ -28,6 +28,7 @@ Route::get('/', function () {
 });
 Route::get('/bycategory', [CategoryController::class, 'ByCategory']);
 Route::get('/by-brand', [BrandController::class, 'ByBrand']);
+Route::get('/policy', [PolicyController::class, 'PolicybyType']);
 
 
 // Brand API Route

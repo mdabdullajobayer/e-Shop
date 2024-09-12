@@ -93,9 +93,12 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a class="nav-link nav_item" href="contact.html">About Us</a></li>
-                                <li><a class="nav-link nav_item" href="contact.html">Policy</a></li>
-                                <li><a class="nav-link nav_item" href="contact.html">Contact Us</a></li>
+                                <li><a class="nav-link nav_item" href="policy?type=about">About Us</a></li>
+                                <li><a class="nav-link nav_item" href="policy?type=complain">Complain</a></li>
+                                <li><a class="nav-link nav_item" href="policy?type=refund">Refund Policy</a></li>
+                                <li><a class="nav-link nav_item" href="policy?type=how to buy">How to Buy</a></li>
+                                <li><a class="nav-link nav_item" href="policy?type=terms">Terms & Condition</a></li>
+                                <li><a class="nav-link nav_item" href="policy?type=contact">Contact</a></li>
                             </ul>
                         </div>
                         <div class="contact_phone contact_support">
