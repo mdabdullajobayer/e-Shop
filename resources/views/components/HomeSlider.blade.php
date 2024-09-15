@@ -34,7 +34,7 @@
                                     <h5 class="mb-3 mb-sm-4 staggered-animation font-weight-light"
                                         data-animation="slideInLeft" data-animation-delay="1s">${item['short_des']}</h5>
                                     <a class="btn btn-fill-out staggered-animation text-uppercase"
-                                        href="#" data-animation="slideInLeft"
+                                        href="details?id=${item['id']}" data-animation="slideInLeft"
                                         data-animation-delay="1.5s">Shop Now</a>
                                 </div>
                             </div>

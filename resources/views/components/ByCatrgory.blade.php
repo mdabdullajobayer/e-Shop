@@ -17,7 +17,7 @@
                         <div class="col-3">
                             <div class="product_wrap">
                                 <div class="product_img">
-                                    <a href="shop-product-detail.html">
+                                    <a href="details?id=${item['id']}">
                                         <img src="${item['image']}">
                                         <img class="product_hover_img" src="${item['image']}" alt="el_hover_img1">
                                     </a>
@@ -29,7 +29,7 @@
                                     </div>
                                 </div>
                                 <div class="product_info">
-                                    <h6 class="product_title"><a href="shop-product-detail.html">${item['title']}</a></h6>
+                                    <h6 class="product_title"><a href="details?id=${item['id']}">${item['title']}</a></h6>
                                     <div class="product_price">
                                         <span class="price">৳ ${item['price']}</span>
                                         <!-- <del>$55.25</del>
