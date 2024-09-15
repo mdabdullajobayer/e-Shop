@@ -7,6 +7,7 @@
     <script>
         (async () => {
             await productDetails();
+            await productReview();
             await TopBrand();
             hideLoader();
         })()

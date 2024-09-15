@@ -13,6 +13,6 @@ class ProductReview extends Model
 
     public function profile(): BelongsTo
     {
-        return $this->BelongsTo(CustomerProfile::class, 'customer_id');
+        return $this->BelongsTo(CustomerProfile::class, 'user_id');
     }
 }
