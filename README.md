@@ -1,66 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#  eShop Ecommerce 
+A e-commerce platform built with Laravel 10 for selling products. The website allows users to easily browse and search for products by categories, brands, and various attributes. It includes detailed product information, user reviews, and a secure checkout process. Admins can manage product listings, categories, customer data, and orders through an intuitive dashboard. The platform supports seamless order management, real-time notifications, and secure payment processing to ensure a smooth shopping experience for customers.
+## Requirements
 
-## About Laravel
+- **Composer**: For managing PHP dependencies.
+- **Database**: MySQL, PostgreSQL, SQLite, or SQL Server. Ensure the corresponding PHP extension is installed.
+- **Web Server**: Apache or Nginx.
+- **Git**: For version control.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+For installation of PHP extensions on Ubuntu/Debian-based systems, use:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/mdabdullajobayer/point_of_sale.git
+    ```
+    ```bash
+    cd point_of_sale
+    ```
+2. **Install Dependencies**
+    ```bash
+    composer install
+    ```
+3. **Set Up Environment Variables**: Copy the `.env.example` file to `.env` and update the necessary environment variables.
+    ```bash
+    cp .env.example .env
+    ```
+4. **Run Migrations**: Set up the database tables.
+    ```bash
+    php artisan migrate
+    ```
+5. **Serve the Application**: Start the Laravel development server.
+    ```bash
+    php artisan serve
+    ```
 
-## Learning Laravel
+## Project Dependencies
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This project includes various dependencies. Here’s a summary of the main components:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Laravel Framework**: ^10.0
+- **PHP**: ^8.1
+- **barryvdh/laravel-dompdf**: ^3.0 (PDF generation)
+- **firebase/php-jwt**: ^6.10 (JWT authentication)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+For full details, refer to the `composer.json` file located in the project root.
 
-## Laravel Sponsors
+## Routes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Web Routes
 
-### Premium Partners
+| HTTP Method | URI           | Controller                | Method          | Description                                    |
+|-------------|---------------|---------------------------|-----------------|------------------------------------------------|
+| GET         | `/`           | N/A                       | N/A             | Returns the homepage view.                     |
+| GET         | `/bycategory` | `CategoryController`      | `ByCategory`    | Retrieves products by category.                |
+| GET         | `/by-brand`   | `BrandController`         | `ByBrand`       | Retrieves products by brand.                   |
+| GET         | `/policy`     | `PolicyController`        | `PolicybyType`  | Displays policy based on type.                 |
+| GET         | `/details`    | `ProductController`       | `details`       | Displays product details.                      |
+| GET         | `/login`      | `UserController`          | `LoginPage`     | Displays the login page.                       |
+| GET         | `/verify`     | `UserController`          | `VerifyPage`    | Displays the OTP verification page.            |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### API Routes
+
+#### Brand API Routes
+
+| HTTP Method | URI                 | Controller           | Method          | Description                                    |
+|-------------|---------------------|----------------------|-----------------|------------------------------------------------|
+| GET         | `/brand-list`       | `BrandController`    | `getall`        | Retrieves the list of all brands.              |
+
+#### Category API Routes
+
+| HTTP Method | URI                 | Controller             | Method          | Description                                    |
+|-------------|---------------------|------------------------|-----------------|------------------------------------------------|
+| GET         | `/category-list`    | `CategoryController`    | `getall`        | Retrieves the list of all categories.          |
+
+#### Product API Routes
+
+| HTTP Method | URI                             | Controller            | Method               | Description                                     |
+|-------------|---------------------------------|-----------------------|----------------------|-------------------------------------------------|
+| GET         | `/list-product-category/{id}`   | `ProductController`    | `ListProductbyCategory` | Lists products by category ID.               |
+| GET         | `/list-product-brand/{brand_id}`| `ProductController`    | `ListProductbyBrand`   | Lists products by brand ID.                   |
+| GET         | `/list-product-remark/{remark}` | `ProductController`    | `ListProductbyRemark`  | Lists products by remark.                     |
+| GET         | `/list-product-slider`          | `ProductController`    | `ListProductbySlider`  | Lists products for the homepage slider.       |
+| GET         | `/product-details/{id}`         | `ProductController`    | `ProductDetailsbyId`   | Retrieves product details by product ID.      |
+| GET         | `/list-review/{product_id}`     | `ProductController`    | `ListReviewProduct`    | Lists reviews for a specific product.         |
+
+#### Policy API Route
+
+| HTTP Method | URI                 | Controller            | Method          | Description                                    |
+|-------------|---------------------|-----------------------|-----------------|------------------------------------------------|
+| GET         | `/policy-type/{type}`| `PolicyController`    | `policy`        | Retrieves policies based on the type.          |
+
+### User API Routes
+
+| HTTP Method | URI                        | Controller           | Method          | Description                                     |
+|-------------|----------------------------|----------------------|-----------------|-------------------------------------------------|
+| GET         | `/UserLogin/{UserEmail}`    | `UserController`     | `UserLogin`     | Logs in a user by email.                        |
+| GET         | `/VerifyLogin/{UserMail}/{OTP}`| `UserController`   | `VerifyLogin`   | Verifies user login by email and OTP.           |
+| GET         | `/UserLogout`              | `UserController`     | `UserLogout`    | Logs out the user.                              |
+
+### Protected Routes (Token Verification Required)
+
+#### User Profile API Routes
+
+| HTTP Method | URI              | Controller          | Method          | Description                                    |
+|-------------|------------------|---------------------|-----------------|------------------------------------------------|
+| POST        | `/CreateUser`     | `ProfileController` | `CreateUser`    | Creates a new user profile.                    |
+| GET         | `/ReadProfile`    | `ProfileController` | `ReadProfile`   | Retrieves the profile of the logged-in user.   |
+
+#### User Review API Routes
+
+| HTTP Method | URI              | Controller               | Method          | Description                                    |
+|-------------|------------------|--------------------------|-----------------|------------------------------------------------|
+| POST        | `/CreateReview`   | `ProductReviewController`| `CreateReview`  | Creates a new product review.                  |
+| POST        | `/ReadReview`     | `ProductReviewController`| `ReadReview`    | Retrieves reviews of a product.                |
+
+#### Wishlist API Routes
+
+| HTTP Method | URI                           | Controller          | Method          | Description                                    |
+|-------------|-------------------------------|---------------------|-----------------|------------------------------------------------|
+| POST        | `/ProductWishList`            | `ProductController` | `ProductWishList` | Retrieves the user's wishlist.              |
+| POST        | `/CreateWishList/{product_id}`| `ProductController` | `CreateWishList`| Adds a product to the user's wishlist.         |
+| POST        | `/RemoveWishList/{product_id}`| `ProductController` | `RemoveWishList`| Removes a product from the user's wishlist.    |
+
+#### Cart API Routes
+
+| HTTP Method | URI                           | Controller          | Method          | Description                                    |
+|-------------|-------------------------------|---------------------|-----------------|------------------------------------------------|
+| POST        | `/CreateCartList`             | `ProductController` | `CreateCartList`| Adds a product to the cart.                    |
+| GET         | `/CartList`                   | `ProductController` | `CartList`      | Retrieves the list of items in the cart.       |
+| GET         | `/DeleteCartList/{product_id}`| `ProductController` | `DeleteCartList`| Removes a product from the cart.               |
+
+#### Invoice API Routes
+
+| HTTP Method | URI                           | Controller          | Method          | Description                                    |
+|-------------|-------------------------------|---------------------|-----------------|------------------------------------------------|
+| POST        | `/CreateInvoice`              | `InvoiceController` | `CreateInvoice` | Creates a new invoice.                         |
+| GET         | `/InvoiceList`                | `InvoiceController` | `InvoiceList`   | Retrieves a list of invoices.                  |
+| GET         | `/InvoiceProductList/{invoice_id}`| `InvoiceController` | `InvoiceProductList` | Retrieves products under a specific invoice. |
+
+### Payment API Routes
+
+| HTTP Method | URI              | Controller          | Method           | Description                                    |
+|-------------|------------------|---------------------|------------------|------------------------------------------------|
+| POST        | `/PaymentSuccess`| `InvoiceController` | `PaymentSuccess` | Handles payment success event.                 |
+| POST        | `/PaymentCancel` | `InvoiceController` | `PaymentCancel`  | Handles payment cancellation event.            |
+| POST        | `/PaymentFail`   | `InvoiceController` | `PaymentFail`    | Handles payment failure event.                 |
+
+## Development Process
+
+### Sprint 1: User Authentication
+- Implemented user registration and login functionality.
+- Added JWT-based API authentication using Laravel Sanctum.
+
+### Sprint 2: Product Category Management
+- Developed CRUD operations for product categories and products.
+- Integrated category selection for products.
+
+### Sprint 3: Product Management
+- Developed CRUD operations for products.
+- Integrated Products category selection for products.
+
+### Sprint 4: Customer Management
+- Created customer profiles with CRUD functionality.
+
+### Sprint 5: Invoice Generation
+- Developed invoice creation, listing, and detailed views.
+
+### Sprint 6: Payment Integration
+- Integrated payment gateway and handled payment status updates.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+If you would like to contribute to this project, please fork the repository and create a pull request with your changes. Ensure that all tests pass before submitting your pull request.
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Contact
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+For any questions or feedback, please contact *MD Abdulla Jobayer* at *mdabdullajovayer@gmail.com*.
