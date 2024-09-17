@@ -30,7 +30,8 @@ Route::get('/bycategory', [CategoryController::class, 'ByCategory']);
 Route::get('/by-brand', [BrandController::class, 'ByBrand']);
 Route::get('/policy', [PolicyController::class, 'PolicybyType']);
 Route::get('/details', [ProductController::class, 'details']);
-
+Route::get('/login', [UserController::class, 'LoginPage']);
+Route::get('/verify', [UserController::class, 'VerifyPage']);
 
 // Brand API Route
 Route::get('brand-list', [BrandController::class, 'getall']);

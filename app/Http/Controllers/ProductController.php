@@ -9,6 +9,8 @@ use App\Models\ProductReview;
 use App\Models\Products;
 use App\Models\ProductSlider;
 use App\Models\ProductWishes;
+use Dflydev\DotAccessData\Data;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -118,7 +120,11 @@ class ProductController extends Controller
             ]
         );
 
-        return ResponseHelper::Out('success', $data, 200);
+        if ($data) {
+            return ResponseHelper::Out('success', $data, 200);
+        } else {
+            return ResponseHelper::Out('error', '', 401);
+        }
     }
 
     public function CartList(Request $request): JsonResponse

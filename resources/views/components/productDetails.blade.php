@@ -173,16 +173,17 @@
                         "qty": p_qty
                     });
                     $(".preloader").delay(90).fadeOut(100).addClass('loaded');
-                    if (res.status === 200) {
+                    if (res.data.message === 'success') {
                         alert("Request Successful")
+                    } else {
+                        sessionStorage.setItem("last_location", window.location.href)
+                        window.location.href = "/login"
                     }
                 }
 
             } catch (e) {
-                if (e.response.status === 401) {
-                    sessionStorage.setItem("last_location", window.location.href)
-                    window.location.href = "/login"
-                }
+                // if (e.response.status === 401) {}
+                alert("Request Faild")
             }
         }
 
