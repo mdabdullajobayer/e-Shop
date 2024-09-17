@@ -150,26 +150,7 @@ For full details, refer to the `composer.json` file located in the project root.
 
 ## Development Process
 
-### Sprint 1: User Authentication
-- Implemented user registration and login functionality.
-- Added JWT-based API authentication using Laravel Sanctum.
 
-### Sprint 2: Product Category Management
-- Developed CRUD operations for product categories and products.
-- Integrated category selection for products.
-
-### Sprint 3: Product Management
-- Developed CRUD operations for products.
-- Integrated Products category selection for products.
-
-### Sprint 4: Customer Management
-- Created customer profiles with CRUD functionality.
-
-### Sprint 5: Invoice Generation
-- Developed invoice creation, listing, and detailed views.
-
-### Sprint 6: Payment Integration
-- Integrated payment gateway and handled payment status updates.
 
 ## Contributing
 
