@@ -145,4 +145,9 @@ class ProductController extends Controller
     {
         return view('pages.DetailsPage');
     }
+
+    public function WishList()
+    {
+        return view('pages.wishlist');
+    }
 }

@@ -32,6 +32,10 @@ Route::get('/policy', [PolicyController::class, 'PolicybyType']);
 Route::get('/details', [ProductController::class, 'details']);
 Route::get('/login', [UserController::class, 'LoginPage']);
 Route::get('/verify', [UserController::class, 'VerifyPage']);
+Route::middleware('verify_token')->group(function () {
+    Route::get('/wish', [ProductController::class, 'WishList']);
+    Route::get('/cart', [ProductController::class, 'CartListPage']);
+});
 
 // Brand API Route
 Route::get('brand-list', [BrandController::class, 'getall']);
@@ -63,9 +67,9 @@ Route::middleware('verify_token')->group(function () {
     Route::post('ReadReview', [ProductReviewController::class, 'ReadReview']);
 
     // User Wishlist API Routes
-    Route::post('ProductWishList', [ProductController::class, 'ProductWishList']);
+    Route::get('ProductWishList', [ProductController::class, 'ProductWishList']);
     Route::post('CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
-    Route::post('RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
+    Route::get('RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
 
     // User Cart API Routes
     Route::post('CreateCartList', [ProductController::class, 'CreateCartList']);
