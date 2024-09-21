@@ -17,7 +17,7 @@ For installation of PHP extensions on Ubuntu/Debian-based systems, use:
     git clone https://github.com/mdabdullajobayer/e-Shop.git
     ```
     ```bash
-    cd point_of_sale
+    cd e-Shop
     ```
 2. **Install Dependencies**
     ```bash
