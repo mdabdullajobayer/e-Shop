@@ -1,5 +1,5 @@
 
-#  eShop Ecommerce 
+# eShop Ecommerce
 A e-commerce platform built with Laravel 10 for selling products. The website allows users to easily browse and search for products by categories, brands, and various attributes. It includes detailed product information, user reviews, and a secure checkout process. Admins can manage product listings, categories, customer data, and orders through an intuitive dashboard. The platform supports seamless order management, real-time notifications, and secure payment processing to ensure a smooth shopping experience for customers.
 ## Requirements
 
@@ -42,7 +42,6 @@ This project includes various dependencies. Here’s a summary of the main compo
 
 - **Laravel Framework**: ^10.0
 - **PHP**: ^8.1
-- **barryvdh/laravel-dompdf**: ^3.0 (PDF generation)
 - **firebase/php-jwt**: ^6.10 (JWT authentication)
 
 For full details, refer to the `composer.json` file located in the project root.
@@ -60,6 +59,9 @@ For full details, refer to the `composer.json` file located in the project root.
 | GET         | `/details`    | `ProductController`       | `details`       | Displays product details.                      |
 | GET         | `/login`      | `UserController`          | `LoginPage`     | Displays the login page.                       |
 | GET         | `/verify`     | `UserController`          | `VerifyPage`    | Displays the OTP verification page.            |
+| GET         | `/wish`       | `ProductController`       | `WishList`      | Display Wish List page.                        |
+| GET         | `/cart`       | `ProductController`       | `CartListPage`  | Display Cart List.                             |
+| GET         | `/profile`    | `ProfileController`       | `index`         | Display Customer Profile And Invoice List.     |
 
 ### API Routes
 
@@ -73,12 +75,12 @@ For full details, refer to the `composer.json` file located in the project root.
 
 | HTTP Method | URI                 | Controller             | Method          | Description                                    |
 |-------------|---------------------|------------------------|-----------------|------------------------------------------------|
-| GET         | `/category-list`    | `CategoryController`    | `getall`        | Retrieves the list of all categories.          |
+| GET         | `/category-list`    | `CategoryController`   | `getall`        | Retrieves the list of all categories.          |
 
 #### Product API Routes
 
-| HTTP Method | URI                             | Controller            | Method               | Description                                     |
-|-------------|---------------------------------|-----------------------|----------------------|-------------------------------------------------|
+| HTTP Method | URI                             | Controller             | Method               | Description                                     |
+|-------------|---------------------------------|------------------------|----------------------|-------------------------------------------------|
 | GET         | `/list-product-category/{id}`   | `ProductController`    | `ListProductbyCategory` | Lists products by category ID.               |
 | GET         | `/list-product-brand/{brand_id}`| `ProductController`    | `ListProductbyBrand`   | Lists products by brand ID.                   |
 | GET         | `/list-product-remark/{remark}` | `ProductController`    | `ListProductbyRemark`  | Lists products by remark.                     |
@@ -90,15 +92,15 @@ For full details, refer to the `composer.json` file located in the project root.
 
 | HTTP Method | URI                 | Controller            | Method          | Description                                    |
 |-------------|---------------------|-----------------------|-----------------|------------------------------------------------|
-| GET         | `/policy-type/{type}`| `PolicyController`    | `policy`        | Retrieves policies based on the type.          |
+| GET         | `/policy-type/{type}`| `PolicyController`   | `policy`        | Retrieves policies based on the type.          |
 
 ### User API Routes
 
-| HTTP Method | URI                        | Controller           | Method          | Description                                     |
-|-------------|----------------------------|----------------------|-----------------|-------------------------------------------------|
-| GET         | `/UserLogin/{UserEmail}`    | `UserController`     | `UserLogin`     | Logs in a user by email.                        |
-| GET         | `/VerifyLogin/{UserMail}/{OTP}`| `UserController`   | `VerifyLogin`   | Verifies user login by email and OTP.           |
-| GET         | `/UserLogout`              | `UserController`     | `UserLogout`    | Logs out the user.                              |
+| HTTP Method | URI                        | Controller            | Method          | Description                                     |
+|-------------|----------------------------|-----------------------|-----------------|-------------------------------------------------|
+| GET         | `/UserLogin/{UserEmail}`   | `UserController`      | `UserLogin`     | Logs in a user by email.                        |
+| GET         | `/VerifyLogin/{UserMail}/{OTP}`| `UserController`  | `VerifyLogin`   | Verifies user login by email and OTP.           |
+| GET         | `/UserLogout`              | `UserController`      | `UserLogout`    | Logs out the user.                              |
 
 ### Protected Routes (Token Verification Required)
 
@@ -106,21 +108,21 @@ For full details, refer to the `composer.json` file located in the project root.
 
 | HTTP Method | URI              | Controller          | Method          | Description                                    |
 |-------------|------------------|---------------------|-----------------|------------------------------------------------|
-| POST        | `/CreateUser`     | `ProfileController` | `CreateUser`    | Creates a new user profile.                    |
-| GET         | `/ReadProfile`    | `ProfileController` | `ReadProfile`   | Retrieves the profile of the logged-in user.   |
+| POST        | `/CreateUser`    | `ProfileController` | `CreateUser`    | Creates a new user profile.                    |
+| GET         | `/ReadProfile`   | `ProfileController` | `ReadProfile`   | Retrieves the profile of the logged-in user.   |
 
 #### User Review API Routes
 
 | HTTP Method | URI              | Controller               | Method          | Description                                    |
 |-------------|------------------|--------------------------|-----------------|------------------------------------------------|
-| POST        | `/CreateReview`   | `ProductReviewController`| `CreateReview`  | Creates a new product review.                  |
-| POST        | `/ReadReview`     | `ProductReviewController`| `ReadReview`    | Retrieves reviews of a product.                |
+| POST        | `/CreateReview`  | `ProductReviewController`| `CreateReview`  | Creates a new product review.                  |
+| POST        | `/ReadReview`    | `ProductReviewController`| `ReadReview`    | Retrieves reviews of a product.                |
 
 #### Wishlist API Routes
 
 | HTTP Method | URI                           | Controller          | Method          | Description                                    |
 |-------------|-------------------------------|---------------------|-----------------|------------------------------------------------|
-| POST        | `/ProductWishList`            | `ProductController` | `ProductWishList` | Retrieves the user's wishlist.              |
+| POST        | `/ProductWishList`            | `ProductController` | `ProductWishList` | Retrieves the user's wishlist.               |
 | POST        | `/CreateWishList/{product_id}`| `ProductController` | `CreateWishList`| Adds a product to the user's wishlist.         |
 | POST        | `/RemoveWishList/{product_id}`| `ProductController` | `RemoveWishList`| Removes a product from the user's wishlist.    |
 
@@ -150,7 +152,34 @@ For full details, refer to the `composer.json` file located in the project root.
 
 ## Development Process
 
+### Initial Setup & Database Design
+- Started with setting up an empty project.
+- Designed the database schema.
 
+### Model and Relationship Definitions
+- Defined Eloquent relationships between models.
+
+### API Development
+- Brands Category Listing.
+- Created and managed user profiles.
+- Added user login with OTP verification, profile creation, and verification middleware.
+- Product and Cart Features
+- Implemented product details, add-to-cart, and wishlist systems.
+- Added cart create, read, and delete functionality.
+- Developed review creation and display functionality.
+- Implemented wishlist functionality to allow users to add, view, and remove products.
+- Integrated the SSLCommerz payment gateway for handling payments.
+
+### API Integration & Frontend Enhancements
+- Utilized Axios to fetch and display data, such as product categories, brands, and the home slider.
+- Added preloader and sequence-wise function calling for a smooth user experience.
+- Implemented API calls to handle customer review creation, enhancing the user experience by allowing reviews for products.
+- login/logout view management based on cookies.
+- Added cart display, total calculation, and item removal features.
+
+### Invoice & Payment Management
+- Added invoice API calls and payment management, ensuring users can track invoices and complete payments securely.
+- Added invoice creation, listing, and product management within the invoice system.
 
 ## Contributing
 
