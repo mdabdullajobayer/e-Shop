@@ -144,7 +144,7 @@
                 <p class="m-0 p-0">${item['description']}</p>
                 <div class="rating_wrap">
                     <div class="rating">
-                        <div class="product_rate" style="width:${parseFloat(item['rating'])}%"></div>
+                        <div class="product_rate" style="width:${parseFloat(item['rating'])*20}%"></div>
                     </div>
                 </div>
             </li>`;
@@ -200,6 +200,26 @@
                     sessionStorage.setItem("last_location", window.location.href)
                     window.location.href = "/login"
                 }
+            }
+        }
+
+        async function AddReview() {
+            let reviewText = document.getElementById('reviewTextID').value;
+            let reviewScore = document.getElementById('reviewScore').value;
+            if (reviewScore.length === 0) {
+                alert("Score Required !")
+            } else if (reviewText.length === 0) {
+                alert("Review Required !")
+            } else {
+                $(".preloader").delay(90).fadeIn(100).removeClass('loaded');
+                let postBody = {
+                    description: reviewText,
+                    rating: reviewScore,
+                    product_id: id
+                }
+                let res = await axios.post("/CreateReview", postBody);
+                $(".preloader").delay(90).fadeOut(100).addClass('loaded');
+                await productReview();
             }
         }
     </script>
