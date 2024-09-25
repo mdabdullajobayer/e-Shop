@@ -15,15 +15,17 @@ class ProfileController extends Controller
     }
     public function CreateUser(Request $request)
     {
-        $userId = $request->header('id');
-        // dd($userId);
-        // exit;
-        $request->merge(['user_id', $userId]);
-        $data = CustomerProfile::updateOrCreate(
-            ['user_id' => $userId],
-            $request->input()
-        );
-        return ResponseHelper::Out('success', $data, 200);
+        try {
+            $user_id = $request->header('id');
+            $request->merge(['user_id' => $user_id]);
+            $data = CustomerProfile::updateOrCreate(
+                ['user_id' => $user_id],
+                $request->input()
+            );
+            return ResponseHelper::Out('success', $data, 200);
+        } catch (\Exception $th) {
+            return $th->getMessage();
+        }
     }
 
     public function ReadProfile(Request $request)
