@@ -15,7 +15,13 @@
                 </div>
                 <div class="col-lg-6 col-md-4">
                     <div class="d-flex align-items-center justify-content-center justify-content-md-end">
-                        <span class="me-3">About</span> <span class="me-3">Account</span>
+                        @if (Cookie::get('token') !== null)
+                            <span class="me-3"><a class="text-white" href="/profile">Account</a></span>
+                            <span class="me-3"><a class="text-white btn btn-danger btn-sm"
+                                    href="/UserLogout">Logout</a></span>
+                        @else
+                            <span class="me-3"><a class="text-white" href="/login">Login</a></span>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -37,7 +43,7 @@
                     </form>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
-                    <li><a href="#" class="nav-link"><i class="linearicons-user"></i></a></li>
+                    <li><a href="/profile" class="nav-link"><i class="linearicons-user"></i></a></li>
                     <li><a href="/wish" class="nav-link"><i class="linearicons-heart"></i></a></li>
                     <li><a class="nav-link cart_trigger" href="/cart"><i class="linearicons-bag2"></i></a>
 
