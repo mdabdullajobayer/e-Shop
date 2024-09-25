@@ -101,8 +101,6 @@
     Category();
     async function Category() {
         let res = await axios.get('categroy-list');
-        // console.log(res.data.message);
-        // console.log(res.data.data);
         $('#CategoryItem').empty();
         res.data['data'].forEach((item, i) => {
             let data =

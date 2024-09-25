@@ -62,6 +62,7 @@ Route::middleware('verify_token')->group(function () {
     // User Profile API Routes
     Route::post('CreateUser', [ProfileController::class, 'CreateUser']);
     Route::get('ReadProfile', [ProfileController::class, 'ReadProfile']);
+    Route::get('/profile', [ProfileController::class, 'index']);
     // User Review API Routes
     Route::post('CreateReview', [ProductReviewController::class, 'CreateReview']);
     Route::post('ReadReview', [ProductReviewController::class, 'ReadReview']);
