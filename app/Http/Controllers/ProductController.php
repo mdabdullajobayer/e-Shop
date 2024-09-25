@@ -16,6 +16,21 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function details()
+    {
+        return view('pages.DetailsPage');
+    }
+
+    public function WishList()
+    {
+        return view('pages.wishlist');
+    }
+
+    public function CartListPage()
+    {
+        return view('pages.CartPage');
+    }
+
     public function ListProductbyCategory(Request $request): JsonResponse
     {
         $data = Products::where('category_id', $request->id)
@@ -139,15 +154,5 @@ class ProductController extends Controller
         $user_id = $request->header('id');
         $data = ProductCart::where('user_id', '=', $user_id)->where('product_id', '=', $request->product_id)->delete();
         return ResponseHelper::Out('success', $data, 200);
-    }
-
-    public function details()
-    {
-        return view('pages.DetailsPage');
-    }
-
-    public function WishList()
-    {
-        return view('pages.wishlist');
     }
 }
